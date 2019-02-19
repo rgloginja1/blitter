@@ -8,11 +8,11 @@ contract Blitter {
     string public contractVersion;
     string public contractAuthor;
     
-    string public message;
-    address public messageOwner;
+    string message;
+    address  messageOwner;
     
-    string public messageOwnerNickname;
-    uint8 public messageCount;
+    string  messageOwnerNickname;
+    uint8  messageCount;
     
     uint public postPrice;
     
@@ -41,7 +41,7 @@ contract Blitter {
         contractOwner = msg.sender;
         
         contractName = "Blitter";
-        contractVersion = "0.0.1";
+        contractVersion = "0.0.2";
         contractAuthor = "VERITAS Software Pty Ltd";
         
         messageCount = 0;
@@ -51,7 +51,7 @@ contract Blitter {
     }
     function createPost(string newMessageA, string userNicknameA) public payable {
        
-        if(msg.value > postPrice ){
+        if(msg.value >= postPrice ){
             
             setMessage(newMessageA, userNicknameA);
             
