@@ -29,6 +29,7 @@ contract Blitter {
         string senderNickname;
         uint8 messageNumber;
         bytes32 status;
+        uint messageTimestamp;
     }
     
     MessageHistory[] public messages;
@@ -59,7 +60,6 @@ contract Blitter {
             
             contractOwner.transfer(msg.value);
             
-            
         } else {
             
             revert();
@@ -78,28 +78,14 @@ contract Blitter {
                 senderAddress: postGet1.senderAddress,
                 senderNickname: postGet1.senderNickname,
                 messageNumber: postGet1.messageNumber,
-                status: 0
+                status: 0,
+                messageTimestamp: postGet1.messageTimestamp
             });
         }
     
     }
     
-    function getMessage(uint8 numberTT) public returns (string bid) {
-        
-        var bidd = messages[numberTT];
-        
-        if( bidd.senderAddress == msg.sender ){
-            
-            bid = 'This is your post!';
-       
-        } else {
-            
-            bid = "This was not posted by you";
-        }
-        
-    }
-    
-    
+
     function getMyPostCount(address searchAddress) public returns (uint8 myCount) {
         
         var counterMain = messageCount;
@@ -131,7 +117,8 @@ contract Blitter {
             senderAddress: messageOwner,
             senderNickname: messageOwnerNickname,
             messageNumber: messageCount,
-            status: 1
+            status: 1,
+            messageTimestamp: now
         }));
         
         CreateLog(messageCount, msg.value, msg.sender);
