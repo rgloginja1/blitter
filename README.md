@@ -1,2 +1,2 @@
-# blitter
-A decentalised micro-blogging platform (smart contract)
+# Blitter
+A decentalised micro-blogging platform
